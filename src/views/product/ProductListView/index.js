@@ -26,6 +26,13 @@ const useStyles = makeStyles((theme) => ({
 const ProductList = () => {
   const classes = useStyles();
   const [products] = useState(data);
+  // useEffect(() => {
+  //   axios.get('http://localhost:8080/v1/talks')
+  //   .then(res => {
+  //       setData(res.data);
+  //       //setCustomers(res.data)
+  //   })
+  // },[])
 
   return (
     <Page

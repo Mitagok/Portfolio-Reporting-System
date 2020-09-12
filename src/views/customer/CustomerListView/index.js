@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Container,
@@ -23,6 +23,15 @@ const useStyles = makeStyles((theme) => ({
 const CustomerListView = () => {
   const classes = useStyles();
   const [customers] = useState(data);
+  // const [customers,setCustomers] = useState([]);
+
+  // useEffect(() => {
+  //   axios.get('http://localhost:8080/v1/talks')
+  //   .then(res => {
+  //       setData(res.data);
+  //       //setCustomers(res.data)
+  //   })
+  // },[])
 
   return (
     <Page

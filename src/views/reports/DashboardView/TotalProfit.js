@@ -26,6 +26,15 @@ const useStyles = makeStyles(() => ({
 const TotalProfit = ({ className, ...rest }) => {
   const classes = useStyles();
 
+  // //make table for total profit 
+  // useEffect(() => {
+  //   axios.get('http://localhost:8080/v1/talks')
+  //   .then(res => {
+  //       setData(res.data);
+  //       //setCustomers(res.data)
+  //   })
+  // },[])
+
   return (
     <Card
       className={clsx(classes.root, className)}

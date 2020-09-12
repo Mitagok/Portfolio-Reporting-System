@@ -47,7 +47,7 @@ const RegisterView = () => {
             xs={16}
           >
             <Details />
-          </Grid>/
+          </Grid>
         </Grid>
       </Container>
   
