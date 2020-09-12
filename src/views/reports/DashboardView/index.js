@@ -48,18 +48,18 @@ const Dashboard = () => {
         <Box
             display="flex"
             justifyContent="flex-end"
-            >
-              <Button className={classes.importButton}>
-                Import
-              </Button>
-              <Button className={classes.exportButton}>
-                Export
-              </Button>
+          >
+            <h3 className={classes.importButton}>
+                Your account balance:
+              </h3>
+              <h3 className={classes.exportButton}>
+                25000
+              </h3> 
               <Button
                 color="primary"
                 variant="contained"
               >
-                Add customer
+                Export Report
               </Button>
         </Box>
         <Box mt={3}>
@@ -120,22 +120,16 @@ const Dashboard = () => {
             >
               <TrafficByDevice />
             </Grid>
+          
           <Grid
-            item
-            lg={4}
-            md={6}
-            xl={3}
-            xs={12}
+          item
+          lg={12}
+          md={12}
+          xl={9}
+          xs={12}
           >
-            <Grid
-                item
-                lg={8}
-                md={12}
-                xl={9}
-                xs={12}
-              >
-                <Line />
-              </Grid>
+            <Line />
+          </Grid>
             <Grid
               item
               lg={4}
@@ -154,7 +148,6 @@ const Dashboard = () => {
             >
               <LatestOrders />
             </Grid>
-          </Grid>
           </Grid>
           </Box>
       </Container>
