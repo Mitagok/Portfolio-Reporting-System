@@ -2,6 +2,8 @@ import React from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+import axios from "axios";
+
 import {
   Box,
   Button,
@@ -25,10 +27,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
 const LoginView = () => {
   const classes = useStyles();
   const navigate = useNavigate();
 
+    
   return (
     <Page
       className={classes.root}
@@ -43,15 +47,36 @@ const LoginView = () => {
         <Container maxWidth="sm">
           <Formik
             initialValues={{
-              email: 'mita@company.com',
-              password: 'Password123'
+              email: '',
+              password: ''
             }}
             validationSchema={Yup.object().shape({
               email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
               password: Yup.string().max(255).required('Password is required')
             })}
-            onSubmit={() => {
-              navigate('/app/dashboard', { replace: true });
+            onSubmit={(values, { setSubmitting })=> {
+                   axios.post('http://localhost:3000/user/login',values)
+                    .then(res => {
+                      if(res.data.msg!=="Incorrect details")
+                      {
+                        setSubmitting(false);
+                        localStorage.setItem("token",res.data.token);
+                        console.log(res)
+                         navigate('/app/dashboard', { replace: true });
+                      }
+                      else
+                      {
+                        setSubmitting(true);
+                        alert(res.data.msg);
+                       
+                      }
+                       
+                    })
+                    .catch(error => {
+                      console.log("login error", error);
+                    });
+
+              
             }}
           >
             {({

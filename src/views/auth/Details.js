@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
@@ -38,7 +39,8 @@ const Details = ({ className, ...rest }) => {
     quantity: 0,
     tradeDate: '',
     totalPrice: 0.0,
-    unitPrice: 0.0
+    unitPrice: 0.0,
+    state: 'Alabama',
   });
 
   const handleChange = (event) => {
@@ -46,6 +48,29 @@ const Details = ({ className, ...rest }) => {
       ...values,
       [event.target.name]: event.target.value
     });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(values.stockName)
+    const data = {
+      stockName: values.stockName,
+      //stockId:   values.stockId,
+      //tradeId:  values.tradeId,
+      tradeType: values.tradeType,
+      quantity:values.quantity,
+      tradeDate:values.tradeDate,
+      //totalPrice:values.totalPrice,
+      unitPrice:values.unitPrice,
+      //state:   values.state
+
+    };
+
+    axios.post(`https://jsonplaceholder.typicode.com/users`, { data })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      });
   };
 
   return (
@@ -56,21 +81,14 @@ const Details = ({ className, ...rest }) => {
       {...rest}
     >
       <Card>
-        <CardHeader
-          subheader="Please enter the new trade details"
-          title="Trade Information"
-        />
+        <CardHeader subheader="Please enter the new trade details" title="Trade Info"     />
+       
         <Divider />
         <CardContent>
-          <Grid
-            container
-            spacing={3}
-          >
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+          <Grid  container  spacing={3}  >
+          
+            <Grid   item md={6}   xs={12} >
+             
               <TextField
                 fullWidth
                 helperText="Please specify the Stock name"
@@ -82,11 +100,8 @@ const Details = ({ className, ...rest }) => {
                 variant="outlined"
               />
             </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+            <Grid   item md={6}   xs={12} >
+            
               <TextField
                 fullWidth
                 label="Stock Id"
@@ -97,11 +112,7 @@ const Details = ({ className, ...rest }) => {
                 variant="outlined"
               />
             </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+            <Grid   item md={6}   xs={12} >
               <TextField
                 fullWidth
                 label="Trade Id"
@@ -112,11 +123,7 @@ const Details = ({ className, ...rest }) => {
                 variant="outlined"
               />
             </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+            <Grid   item md={6}   xs={12} >
               <TextField
                 fullWidth
                 label="Trade Type"
@@ -138,11 +145,7 @@ const Details = ({ className, ...rest }) => {
                 ))}
               </TextField>
             </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+            <Grid   item md={6}   xs={12} >
               <TextField
                 fullWidth
                 label="Quantity"
@@ -154,14 +157,10 @@ const Details = ({ className, ...rest }) => {
                 variant="outlined"
               />
             </Grid>
-              <Grid
-                item
-                md={6}
-                xs={12}
-              >
+            <Grid   item md={6}   xs={12} >
                 <TextField
                   fullWidth
-                  label="Trade Date"
+                 // label="Trade Date"
                   name="tradeDate"
                   onChange={handleChange}
                   required
@@ -186,11 +185,7 @@ const Details = ({ className, ...rest }) => {
                 variant="outlined"
               />
             </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+            <Grid   item md={6}   xs={12} >
               <TextField
                 fullWidth
                 label="Total Price"
@@ -214,6 +209,7 @@ const Details = ({ className, ...rest }) => {
           <Button
             color="primary"
             variant="contained"
+            onClick={handleSubmit}
           >
             Submit
           </Button>
