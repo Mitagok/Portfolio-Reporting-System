@@ -45,7 +45,7 @@ const TasksProgress = ({ className, ...rest }) => {
               gutterBottom
               variant="h6"
             >
-              TOTAL MONEY INVESTED
+              AMOUNT INVESTED
             </Typography>
             <Typography
               color="textPrimary"

@@ -76,6 +76,9 @@ const RegisterView = () => {
   };
 
   return (
+    <Page
+      title="Input Trade"
+    >
       <TabContext value={value}>
         <AppBar position="static">
           <TabList onChange={handleChange} aria-label="simple tabs example">
@@ -118,6 +121,7 @@ const RegisterView = () => {
         </Container>
       </TabPanel>
       </TabContext>
+    </Page>
   );
 }
 export default RegisterView;
