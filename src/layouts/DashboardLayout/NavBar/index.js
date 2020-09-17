@@ -27,7 +27,7 @@ import NavItem from './NavItem';
 const user = {
   avatar: '/static/images/avatars/avatar_6.png',
   jobTitle: 'Senior Developer',
-  name: 'Katarina Smith'
+  name: 'Madhumita Gokhale'
 };
 
 const items = [
