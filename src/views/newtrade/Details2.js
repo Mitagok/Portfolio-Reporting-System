@@ -35,7 +35,6 @@ const Details = ({ className, ...rest }) => {
     tradeType: '',
     coupon: 0,
     tradeDate: '',
-    maturityDate: '',
     unitPrice: 0.0
   });
 
@@ -135,22 +134,6 @@ const Details = ({ className, ...rest }) => {
                 required
                 type="date"
                 value={values.tradeDate}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Maturity Date"
-                name="maturityDate"
-                onChange={handleChange}
-                required
-                type="date"
-                value={values.maturityDate}
                 variant="outlined"
               />
             </Grid>
